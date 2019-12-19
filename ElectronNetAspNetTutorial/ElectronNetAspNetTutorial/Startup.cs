@@ -42,7 +42,11 @@ namespace ElectronNetAspNetTutorial {
             app.UseEndpoints(endpoints => {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    //--- Home コントローラ(プロジェクト作成時に生成されるコード) ---
+                    //pattern: "{controller=Home}/{action=Index}/{id?}");
+                    //--- HelloWorld コントローラ ---
+                    //pattern: "{controller=HelloWorld}/{action=Index}/{id?}");
+                    pattern: "{controller=HelloWorld}/{action=Welcome}/{name=Rick}/{numtimes=4}");
             });
 
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync()); // 修正
