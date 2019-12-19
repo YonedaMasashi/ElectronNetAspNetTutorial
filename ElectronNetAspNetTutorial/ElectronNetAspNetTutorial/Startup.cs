@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using ElectronNET.API; // èCê≥
+using ElectronNetAspNetTutorial.Data; // èCê≥
+using Microsoft.EntityFrameworkCore; // èCê≥
 
 namespace ElectronNetAspNetTutorial {
     public class Startup {
@@ -21,6 +23,10 @@ namespace ElectronNetAspNetTutorial {
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services) {
             services.AddControllersWithViews();
+
+            // èCê≥
+            services.AddDbContext<MvcMovieContext>(options =>
+                options.UseSqlServer(Configuration.GetConnectionString("MvcMovieContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
